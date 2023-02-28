@@ -2,6 +2,7 @@ package br.com.escuderodev.api_rest.api.dto.medico;
 
 import br.com.escuderodev.api_rest.api.dto.endereco.Endereco;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class MedicoJPA {
+public class Medico {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idmedico;
     private String nome;
@@ -26,7 +27,7 @@ public class MedicoJPA {
     @Embedded
     private Endereco endereco;
 
-    public MedicoJPA(MedicosDTO dados) {
+    public Medico(@Valid DadosCadastroMedico dados) {
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
